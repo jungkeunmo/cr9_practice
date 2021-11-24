@@ -1,0 +1,15 @@
+extends ../layout/main.pug
+
+block content 
+    form(action="/", method="get")
+        button 돌아가기
+    form(action="/create", method="post")
+        select(name="score")
+            option(value="1") 1점             
+            option(value="2") 2점 
+            option(value="3") 3점 
+            option(value="4") 4점 
+            option(value="5" selected) 5점 
+
+        input(type="text" name="content" required)
+        button 작성    

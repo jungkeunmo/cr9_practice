@@ -1,0 +1,10 @@
+extends ../layout/main.pug
+
+block content 
+    form(action="/create", method="get")
+        button 생성
+    each review in reviews 
+        div 점수: #{review.score} 점
+        div 내용: #{review.content}
+        div 작성일: #{review.createdAt}
+        hr     

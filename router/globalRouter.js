@@ -28,10 +28,28 @@ router.get("/create", (req, res) => {
 
 router.post("/create", (req, res) => {
     const insertQuery = `
-        score,
-        content,
-        createdAt
+       INSERT   INTO    reviews (
+           score,
+           content,
+           createdAt
+       ) VALUES (
+            ${req.body.score},
+            "${req.body.content}",
+            now()
+       )
     `;
+
+    try {
+        db.query(insertQuery, (error, reviews) => {
+            if(error) {
+                console.log(error);
+            };
+            res.redirect("/");
+        });
+    } catch (error) {
+        console.error(error);
+        res.redirect("/");
+    };    
 });
 
 module.exports = router;
